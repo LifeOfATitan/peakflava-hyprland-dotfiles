@@ -16,6 +16,7 @@ A high-performance, visually polished, and fully customized Hyprland environment
 ### Desktop & Overview
 ![Desktop](./screenshots/desktop-overview.png)
 ![Desktop](./screenshots/desktop-overview2.png)
+![Desktop](./screenshots/desktop-overview3.png)
 
 ### Status Bar
 ![Waybar](./screenshots/waybar-status-bar.png)
@@ -32,6 +33,7 @@ A high-performance, visually polished, and fully customized Hyprland environment
 
 ### System
 ![Lock Screen](./screenshots/wlogout-lock-screen.png)
+![Lock Screen](./screenshots/wlogout-lock-screen2.png)
 ![Notification](./screenshots/dunst-notification.png)
 
 ---
