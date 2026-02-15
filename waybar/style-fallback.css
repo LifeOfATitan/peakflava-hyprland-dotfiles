@@ -1,0 +1,271 @@
+/* ═══════════════════════════════════════════════════
+   STATIC FALLBACK WAYBAR CSS - IMMEDIATE FIX
+   ═════════════════════════════════════════════════════════ */
+
+/* Dynamic Waybar Colors - Fallback to Working Colors */
+:root {
+    --primary: #8b5cf6;
+    --secondary: #06b6d4;
+    --bg: #1e1e2e;
+    --fg: #d4d4d8;
+    --lighter-primary: #a78bfa;
+    --much-lighter-primary: #c4b5fd;
+    --lighter-secondary: #22d3ee;
+    --much-lighter-secondary: #67e8f9;
+    --lighter-bg: #2d2d44;
+    --much-lighter-bg: #3d3d5a;
+}
+
+/* Individual Module Colors */
+#custom-launcher {
+    background-color: #8b5cf6;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 6px 12px;
+    margin: 6px 3px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#custom-launcher:hover {
+    background-color: #a78bfa;
+    transform: scale(1.05);
+}
+
+#clock {
+    background-color: #06b6d4;
+    color: #ffffff;
+    margin: 6px 3px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#clock:hover {
+    background-color: #67e8f9;
+    transform: scale(1.05);
+}
+
+#idle_inhibitor {
+    background-color: #a78bfa;
+    color: #ffffff;
+    margin: 6px 3px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#idle_inhibitor.activated {
+    background-color: #c4b5fd;
+    color: #1e1e2e;
+    margin: 6px 3px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#idle_inhibitor:hover {
+    background-color: #c4b5fd;
+    transform: scale(1.05);
+}
+
+#custom-weather {
+    background-color: #22d3ee;
+    color: #ffffff;
+    margin: 6px 3px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#custom-weather:hover {
+    background-color: #67e8f9;
+    transform: scale(1.05);
+}
+
+/* Center Modules */
+#workspaces {
+    background-color: #1e1e2e;
+    margin: 6px 3px;
+}
+
+#workspaces button {
+    background-color: #2d2d44;
+    color: #d4d4d8;
+    margin: 6px 3px;
+    padding: 6px 18px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#workspaces button:hover {
+    background-color: #3d3d5a;
+    transform: scale(1.05);
+}
+
+#workspaces button.active {
+    background-color: #8b5cf6;
+    color: #1e1e2e;
+    font-weight: bold;
+    margin: 6px 3px;
+    padding: 6px 18px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#window {
+    background-color: #c4b5fd;
+    color: #1e1e2e;
+    padding: 6px 15px;
+    font-weight: 700;
+    border-radius: 4px;
+    margin: 6px 3px;
+    transition: all 0.3s ease;
+}
+
+#window:hover {
+    background-color: #8b5cf6;
+    transform: scale(1.05);
+}
+
+/* Right Modules */
+#tray {
+    background-color: #67e8f9;
+    padding: 6px 10px;
+    margin: 6px 3px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#tray:hover {
+    background-color: #22d3ee;
+    transform: scale(1.05);
+}
+
+#network {
+    background-color: #8b5cf6;
+    color: #ffffff;
+    margin: 6px 3px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#network:hover {
+    background-color: #a78bfa;
+    transform: scale(1.05);
+}
+
+#cpu {
+    background-color: #06b6d4;
+    color: #ffffff;
+    margin: 6px 3px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#cpu:hover {
+    background-color: #22d3ee;
+    transform: scale(1.05);
+}
+
+#pulseaudio {
+    background-color: #a78bfa;
+    color: #ffffff;
+    margin: 6px 3px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#pulseaudio:hover {
+    background-color: #c4b5fd;
+    transform: scale(1.05);
+}
+
+#backlight {
+    background-color: #22d3ee;
+    color: #ffffff;
+    margin: 6px 3px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#backlight:hover {
+    background-color: #67e8f9;
+    transform: scale(1.05);
+}
+
+#battery {
+    background-color: #c4b5fd;
+    color: #1e1e2e;
+    margin: 6px 3px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#battery:hover {
+    background-color: #8b5cf6;
+    transform: scale(1.05);
+}
+
+#custom-clipboard {
+    background-color: #67e8f9;
+    color: #1e1e2e;
+    margin: 6px 3px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#custom-clipboard:hover {
+    background-color: #22d3ee;
+    transform: scale(1.05);
+}
+
+#custom-notification {
+    background-color: #2d2d44;
+    color: #d4d4d8;
+    margin: 6px 3px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#custom-notification:hover {
+    background-color: #3d3d5a;
+    transform: scale(1.05);
+}
+
+#custom-power {
+    background-color: #3d3d5a;
+    color: #d4d4d8;
+    margin: 6px 3px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#custom-power:hover {
+    background-color: #8b5cf6;
+    transform: scale(1.05);
+}
+
+/* Hover Effects for All Modules */
+#custom-launcher:hover { background-color: #a78bfa; transform: scale(1.05); }
+#clock:hover { background-color: #67e8f9; transform: scale(1.05); }
+#idle_inhibitor:hover { background-color: #c4b5fd; transform: scale(1.05); }
+#custom-weather:hover { background-color: #67e8f9; transform: scale(1.05); }
+#window:hover { background-color: #8b5cf6; transform: scale(1.05); }
+#network:hover { background-color: #a78bfa; transform: scale(1.05); }
+#cpu:hover { background-color: #22d3ee; transform: scale(1.05); }
+#pulseaudio:hover { background-color: #c4b5fd; transform: scale(1.05); }
+#backlight:hover { background-color: #67e8f9; transform: scale(1.05); }
+#battery:hover { background-color: #8b5cf6; transform: scale(1.05); }
+#custom-clipboard:hover { background-color: #22d3ee; transform: scale(1.05); }
+#custom-notification:hover { background-color: #3d3d5a; transform: scale(1.05); }
+#custom-power:hover { background-color: #8b5cf6; transform: scale(1.05); }
+#tray:hover { background-color: #22d3ee; transform: scale(1.05); }

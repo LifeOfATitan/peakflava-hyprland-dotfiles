@@ -1,0 +1,240 @@
+/* ═══════════════════════════════════════════════════════════════════
+   ROFI CONFIGURATION
+   Custom Theme - Deep Purple & Cyan
+   ═══════════════════════════════════════════════════════════════════ */
+
+configuration {
+    modi:                       "drun,run,window,ssh";
+    show-icons:                 true;
+    display-drun:               "  Apps";
+    display-run:                "  Run";
+    display-window:             "  Windows";
+    display-ssh:                "  SSH";
+    drun-display-format:        "{name}";
+    window-format:              "{w} · {c} · {t}";
+    font:                       "JetBrainsMono Nerd Font 12";
+    icon-theme:                 "Papirus-Dark";
+}
+
+@theme "/dev/null"
+
+/* ═══════════════════════════════════════════════════════════════════
+   COLOR DEFINITIONS
+   ═══════════════════════════════════════════════════════════════════ */
+* {
+    /* Base colors - inherited from ~/.cache/rofi_colors.rasi */
+    
+    fg-secondary:       #a1a1aa;
+    fg-tertiary:        #71717a;
+    
+    bg-secondary:       #1a1a2e;
+    bg-tertiary:        #16213e;
+    
+    separator-color:    #27272a;
+    
+    background-color:   transparent;
+}
+
+@import "~/.cache/rofi_colors.rasi"
+
+/* Apply inherited colors */
+* {
+    text-color:         @fg-primary;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   MAIN WINDOW
+   ═══════════════════════════════════════════════════════════════════ */
+window {
+    transparency:               "real";
+    location:                   center;
+    anchor:                     center;
+    fullscreen:                 false;
+    width:                      800px;
+    x-offset:                   0px;
+    y-offset:                   0px;
+    
+    enabled:                    true;
+    border:                     2px solid;
+    border-radius:              16px;
+    border-color:               @border-color;
+    background-color:           @bg-primary;
+    cursor:                     "default";
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   MAIN BOX
+   ═══════════════════════════════════════════════════════════════════ */
+mainbox {
+    enabled:                    true;
+    spacing:                    0px;
+    background-color:           transparent;
+    orientation:                vertical;
+    children:                   [ "inputbar", "listbox" ];
+}
+
+listbox {
+    spacing:                    12px;
+    padding:                    12px;
+    background-color:           transparent;
+    orientation:                vertical;
+    children:                   [ "message", "listview", "mode-switcher" ];
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   INPUTBAR
+   ═══════════════════════════════════════════════════════════════════ */
+inputbar {
+    enabled:                    true;
+    spacing:                    15px;
+    padding:                    24px 80px;
+    background-color:           @accent-primary;
+    text-color:                 @fg-primary;
+    orientation:                horizontal;
+    children:                   [ "prompt", "entry" ];
+}
+
+prompt {
+    enabled:                    true;
+    padding:                    8px 12px;
+    background-color:           @bg-tertiary;
+    border-radius:              8px;
+    text-color:                 @accent-secondary;
+    font:                       "JetBrainsMono Nerd Font Bold 14";
+    expand:                     false;
+}
+
+entry {
+    enabled:                    true;
+    padding:                    8px 12px;
+    background-color:           @bg-tertiary;
+    border-radius:              8px;
+    text-color:                 @fg-primary;
+    cursor:                     text;
+    placeholder:                "Search...";
+    placeholder-color:          @fg-tertiary;
+    expand:                     true;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   LISTVIEW
+   ═══════════════════════════════════════════════════════════════════ */
+listview {
+    enabled:                    true;
+    columns:                    1;
+    lines:                      8;
+    cycle:                      true;
+    dynamic:                    true;
+    scrollbar:                  true;
+    layout:                     vertical;
+    reverse:                    false;
+    fixed-height:               true;
+    fixed-columns:              true;
+    
+    spacing:                    6px;
+    background-color:           transparent;
+    text-color:                 @fg-primary;
+    cursor:                     "default";
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SCROLLBAR
+   ═══════════════════════════════════════════════════════════════════ */
+scrollbar {
+    handle-width:               6px;
+    handle-color:               @accent-primary;
+    border-radius:              8px;
+    background-color:           @bg-tertiary;
+    margin:                     0px 0px 0px 8px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   ELEMENTS
+   ═══════════════════════════════════════════════════════════════════ */
+element {
+    enabled:                    true;
+    spacing:                    12px;
+    padding:                    10px;
+    border-radius:              10px;
+    background-color:           transparent;
+    text-color:                 @fg-primary;
+    cursor:                     pointer;
+}
+
+element normal.normal {
+    background-color:           transparent;
+    text-color:                 @fg-primary;
+}
+
+element selected.normal {
+    background-color:           @bg-selected;
+    text-color:                 @fg-selected;
+}
+
+element alternate.normal {
+    background-color:           transparent;
+    text-color:                 @fg-primary;
+}
+
+element-icon {
+    background-color:           transparent;
+    text-color:                 inherit;
+    size:                       32px;
+    cursor:                     inherit;
+}
+
+element-text {
+    background-color:           transparent;
+    text-color:                 inherit;
+    cursor:                     inherit;
+    vertical-align:             0.5;
+    horizontal-align:           0.0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   MODE SWITCHER
+   ═══════════════════════════════════════════════════════════════════ */
+mode-switcher {
+    enabled:                    true;
+    spacing:                    12px;
+    background-color:           transparent;
+    text-color:                 @fg-primary;
+}
+
+button {
+    padding:                    10px;
+    border-radius:              8px;
+    background-color:           @bg-secondary;
+    text-color:                 @fg-secondary;
+    cursor:                     pointer;
+}
+
+button selected {
+    background-color:           @accent-primary;
+    text-color:                 #ffffff;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   MESSAGE
+   ═══════════════════════════════════════════════════════════════════ */
+message {
+    enabled:                    true;
+    margin:                     0px;
+    padding:                    12px;
+    border-radius:              10px;
+    background-color:           @bg-secondary;
+    text-color:                 @fg-primary;
+}
+
+textbox {
+    background-color:           transparent;
+    text-color:                 @fg-primary;
+    vertical-align:             0.5;
+    horizontal-align:           0.0;
+}
+
+error-message {
+    padding:                    12px;
+    background-color:           @bg-primary;
+    text-color:                 @fg-primary;
+}

@@ -1,0 +1,141 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 52,
+    "margin-top": 8,
+    "margin-left": 10,
+    "margin-right": 10,
+    "spacing": 4,
+    "modules-left": ["custom/launcher", "custom/clipboard", "clock", "custom/weather_themed"],
+    "modules-center": ["idle_inhibitor", "hyprland/workspaces", "hyprland/window"],
+    "modules-right": ["tray", "network", "cpu", "pulseaudio", "backlight", "battery", "custom/notification", "custom/power"],
+    "reload_style_on_change": true,
+
+    "custom/launcher": {
+        "format": "",
+        "on-click": "rofi -show drun",
+        "tooltip": false
+    },
+
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%a, %d, %b, %j}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        },
+        "tooltip": true
+    },
+
+    "custom/weather_themed": {
+        "format": "{}",
+        "tooltip": true,
+        "interval": 3600,
+        "exec": "~/.config/hypr/scripts/weather.sh",
+        "return-type": "json",
+        "signal": 8,
+        "on-click": "~/.config/hypr/scripts/weather.sh set-city",
+        "on-click-right": "~/.config/hypr/scripts/weather.sh toggle"
+    },
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "format-icons": {
+            "1": "一",
+            "2": "二",
+            "3": "三",
+            "4": "四",
+            "5": "五",
+            "6": "六",
+            "7": "七",
+            "8": "八",
+            "9": "九",
+            "10": "十"
+        },
+        "persistent-workspaces": {
+            "*": 5
+        }
+    },
+
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 25,
+        "separate-outputs": true
+    },
+
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10,
+        "show-passive-items": true,
+        "ignore-list": [""]
+    },
+
+    "network": {
+        "format-wifi": "󰖩",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰖪",
+        "tooltip-format": "{essid} ({signalStrength}%)",
+        "on-click": "nm-connection-editor"
+    },
+
+    "cpu": {
+        "format": " {usage}%",
+        "on-click": "kitty --class btop -e btop",
+        "tooltip": false
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "backlight": {
+        "device": "acpi_video1",
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰃞", "󰃟", "󰃠"]
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰂄 {capacity}%",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+
+    "custom/clipboard": {
+        "format": "󰅍",
+        "on-click": "cliphist list | rofi -dmenu | cliphist decode | wl-copy",
+        "tooltip": false
+    },
+
+    "custom/notification": {
+        "tooltip": true,
+        "format": "{}",
+        "return-type": "json",
+        "exec": "~/.config/waybar/scripts/notification-tray.sh count",
+        "interval": 5,
+        "on-click": "~/.config/waybar/scripts/notification-tray.sh show",
+        "on-click-right": "~/.config/waybar/scripts/notification-tray.sh dnd-toggle",
+        "signal": 9
+    },
+
+    "custom/power": {
+        "format": "",
+        "on-click": "wlogout --buttons-per-row 3",
+        "tooltip": false
+    }
+}

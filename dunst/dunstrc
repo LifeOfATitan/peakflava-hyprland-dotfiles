@@ -1,0 +1,148 @@
+# ═══════════════════════════════════════════════════════════════════
+# DUNST CONFIGURATION
+# Notification daemon for Hyprland
+# ═══════════════════════════════════════════════════════════════════
+
+[global]
+    # ═══════════════════════════════════════════════════════════════
+    # DISPLAY
+    # ═══════════════════════════════════════════════════════════════
+    monitor = 0
+    follow = mouse
+    
+    # ═══════════════════════════════════════════════════════════════
+    # GEOMETRY
+    # ═══════════════════════════════════════════════════════════════
+    width = (300, 400)
+    height = 300
+    origin = top-right
+    offset = 20x50
+    scale = 0
+    notification_limit = 5
+    
+    # ═══════════════════════════════════════════════════════════════
+    # PROGRESS BAR
+    # ═══════════════════════════════════════════════════════════════
+    progress_bar = true
+    progress_bar_height = 10
+    progress_bar_frame_width = 1
+    progress_bar_min_width = 150
+    progress_bar_max_width = 300
+    
+    # ═══════════════════════════════════════════════════════════════
+    # APPEARANCE
+    # ═══════════════════════════════════════════════════════════════
+    indicate_hidden = yes
+    transparency = 10
+    separator_height = 2
+    padding = 16
+    horizontal_padding = 16
+    text_icon_padding = 16
+    frame_width = 2
+    frame_color = "#669FC9"
+    separator_color = frame
+    sort = yes
+    
+    # ═══════════════════════════════════════════════════════════════
+    # TEXT
+    # ═══════════════════════════════════════════════════════════════
+    font = JetBrainsMono Nerd Font 11
+    line_height = 4
+    markup = full
+    format = "<b>%s</b>\n%b"
+    alignment = left
+    vertical_alignment = center
+    show_age_threshold = 60
+    ellipsize = middle
+    ignore_newline = no
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = yes
+    
+    # ═══════════════════════════════════════════════════════════════
+    # ICONS
+    # ═══════════════════════════════════════════════════════════════
+    icon_position = left
+    min_icon_size = 32
+    max_icon_size = 64
+    icon_path = /usr/share/icons/Papirus-Dark/16x16/status/:/usr/share/icons/Papirus-Dark/16x16/devices/:/usr/share/icons/Papirus-Dark/16x16/apps/
+    
+    # ═══════════════════════════════════════════════════════════════
+    # HISTORY
+    # ═══════════════════════════════════════════════════════════════
+    sticky_history = yes
+    history_length = 20
+    
+    # ═══════════════════════════════════════════════════════════════
+    # MISC
+    # ═══════════════════════════════════════════════════════════════
+    dmenu = /usr/bin/rofi -dmenu -p dunst:
+    browser = /usr/bin/firefox
+    always_run_script = true
+    title = Dunst
+    class = Dunst
+    corner_radius = 12
+    ignore_dbusclose = false
+    
+    # ═══════════════════════════════════════════════════════════════
+    # MOUSE
+    # ═══════════════════════════════════════════════════════════════
+    mouse_left_click = do_action, close_current
+    mouse_middle_click = close_current
+    mouse_right_click = close_all
+
+# ═══════════════════════════════════════════════════════════════════
+# URGENCY LEVELS
+# ═══════════════════════════════════════════════════════════════════
+
+[urgency_low]
+    background = "#ced3d3"
+    foreground = ""
+    frame_color = "#0d1515"
+    timeout = 5
+    icon = /usr/share/icons/Papirus-Dark/16x16/status/dialog-information.svg
+
+[urgency_normal]
+    background = "#ced3d3"
+    foreground = ""
+    frame_color = "#669FC9"
+    timeout = 10
+    icon = /usr/share/icons/Papirus-Dark/16x16/status/dialog-information.svg
+
+[urgency_critical]
+    background = "#ced3d3"
+    foreground = ""
+    frame_color = "#669FC9"
+    timeout = 0
+    icon = /usr/share/icons/Papirus-Dark/16x16/status/dialog-error.svg
+
+# ═══════════════════════════════════════════════════════════════════
+# CUSTOM RULES
+# ═══════════════════════════════════════════════════════════════════
+
+[spotify]
+    appname = Spotify
+    urgency = low
+    frame_color = "#669FC9"
+
+[discord]
+    appname = Discord
+    urgency = normal
+    frame_color = "#669FC9"
+
+[volume]
+    summary = "Volume"
+    urgency = low
+    frame_color = "#0d1515"
+
+[brightness]
+    summary = "Brightness"
+    urgency = low
+    frame_color = "#0d1515"
+
+[kdeconnect]
+    appname = "KDE Connect"
+    desktop_entry = "org.kde.kdeconnect"
+    urgency = normal
+    frame_color = "#669FC9"
+    action_name = default

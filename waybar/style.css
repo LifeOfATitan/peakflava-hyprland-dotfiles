@@ -1,0 +1,178 @@
+/* MINIMAL WORKING WAYBAR CSS - AUTO-CONTRAST TEXT */
+
+/* Main Waybar Bar - Transparent background */
+window#waybar {
+    background: transparent;
+}
+
+/* Individual Module Colors - Auto-Contrast Text */
+#custom-launcher {
+    background-color: #6F8BAB;
+    color: #000000;
+    font-size: 20px;
+    padding: 6px 12px;
+    margin: 6px 3px;
+    border-radius: 4px;
+}
+
+#clock {
+    background-color: #9A99AF;
+    color: #000000;
+    padding: 6px 12px;
+    margin: 6px 3px;
+}
+
+#idle_inhibitor {
+    background-color: #9A99AF;
+    color: #000000;
+    padding: 6px 12px;
+    margin: 6px 3px;
+    border-radius: 4px;
+}
+
+#idle_inhibitor.activated {
+    background-color: #000000;
+    color: #9A99AF;
+    padding: 6px 12px;
+    margin: 6px 3px;
+    border-radius: 4px;
+}
+
+#custom-weather_themed {
+    background-color: #6F8BAB;
+    color: #000000;
+    text-shadow: 0 0 2px rgba(0,0,0,0.5);
+    padding: 6px 8px;
+    margin: 6px 3px;
+}
+
+/* Workspaces - Enhanced Visibility */
+#workspaces {
+    background: transparent;
+}
+
+#workspaces button {
+    background-color: #05111D;
+    color: #ffffff;
+    padding: 6px 12px;
+    margin: 6px 3px;
+    border-radius: 4px;
+    border: 1px solid #45464d;
+    transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+    background-color: #45464d;
+    border-color: #6F8BAB;
+}
+
+#workspaces button.active {
+    background-color: #6F8BAB;
+    color: #000000;
+    border-color: #6F8BAB;
+    border-width: 2px;
+}
+
+#window {
+    background-color: #05111D;
+    color: #ffffff;
+    padding: 6px 12px;
+    margin: 6px 3px;
+    border-radius: 4px;
+}
+
+#window:hover {
+    background-color: #45464d;
+}
+
+#tray {
+    background-color: #05111D;
+    color: #ffffff;
+    padding: 6px 12px;
+    margin: 6px 3px;
+    border-radius: 4px;
+}
+
+#network {
+    background-color: #6F8BAB;
+    color: #000000;
+    padding: 6px 12px;
+    margin: 6px 3px;
+    border-radius: 4px;
+}
+
+#cpu {
+    background-color: #9A99AF;
+    color: #000000;
+    padding: 6px 12px;
+    margin: 6px 3px;
+    border-radius: 4px;
+}
+
+#pulseaudio {
+    background-color: #6F8BAB;
+    color: #000000;
+    padding: 6px 12px;
+    margin: 6px 3px;
+    border-radius: 4px;
+}
+
+#pulseaudio.muted {
+    background-color: #252804;
+    color: #ffffff;
+}
+
+#backlight {
+    background-color: #9A99AF;
+    color: #000000;
+    padding: 6px 12px;
+    margin: 6px 3px;
+    border-radius: 4px;
+}
+
+#battery {
+    background-color: #6F8BAB;
+    color: #000000;
+    padding: 6px 12px;
+    margin: 6px 3px;
+    border-radius: 4px;
+}
+
+#battery.charging {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+#battery.warning {
+    background-color: #f59e0b;
+    color: #000000;
+}
+
+#battery.critical {
+    background-color: #ef4444;
+    color: #ffffff;
+}
+
+#custom-clipboard {
+    background-color: #9A99AF;
+    color: #000000;
+    padding: 6px 12px;
+    margin: 6px 3px;
+    border-radius: 4px;
+}
+
+#custom-notification {
+    background-color: #6F8BAB;
+    color: #000000;
+    padding: 6px 12px;
+    margin: 6px 3px;
+    border-radius: 4px;
+}
+
+#custom-power {
+    background-color: #9A99AF;
+    color: #000000;
+    padding: 6px 12px;
+    margin: 6px 3px;
+    border-radius: 4px;
+}
