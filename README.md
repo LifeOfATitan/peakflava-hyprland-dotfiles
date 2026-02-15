@@ -12,7 +12,15 @@ A high-performance, visually polished, and fully customized Hyprland environment
 - **Productivity Boost**: Custom auto-resizing functions for Neovim, Tmux, and more.
 
 ## 📸 Screenshots
-*(Add your beautiful screenshots here before uploading!)*
+
+![Desktop](./screenshots/desktop-overview.png)
+![Waybar](./screenshots/waybar-status-bar.png)
+![Rofi](./screenshots/rofi-app-launcher.png)
+![Lock Screen](./screenshots/wlogout-lock-screen.png)
+![Terminal](./screenshots/kitty-terminal.png)
+![Theme Switcher](./screenshots/theme-switcher.png)
+![Wallpaper Picker](./screenshots/wallpaper-picker.png)
+![Notification](./screenshots/dunst-notification.png)
 
 ---
 
