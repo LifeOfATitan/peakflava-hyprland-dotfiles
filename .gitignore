@@ -8,3 +8,6 @@ nvim/lazy-lock.json
 
 # OS files
 .DS_Store
+
+# Promotion/marketing materials (personal only)
+promotion/
