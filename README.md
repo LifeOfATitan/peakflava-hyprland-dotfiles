@@ -13,13 +13,25 @@ A high-performance, visually polished, and fully customized Hyprland environment
 
 ## 📸 Screenshots
 
+### Desktop & Overview
 ![Desktop](./screenshots/desktop-overview.png)
+![Desktop](./screenshots/desktop-overview2.png)
+
+### Status Bar
 ![Waybar](./screenshots/waybar-status-bar.png)
+![Waybar](./screenshots/waybar-status-bar2.png)
+
+### Launchers & Pickers
 ![Rofi](./screenshots/rofi-app-launcher.png)
-![Lock Screen](./screenshots/wlogout-lock-screen.png)
-![Terminal](./screenshots/kitty-terminal.png)
-![Theme Switcher](./screenshots/theme-switcher.png)
 ![Wallpaper Picker](./screenshots/wallpaper-picker.png)
+![Theme Switcher](./screenshots/theme-switcher.png)
+![Keybinds](./screenshots/keybinds.png)
+
+### Terminal
+![Kitty](./screenshots/kitty-terminal.png)
+
+### System
+![Lock Screen](./screenshots/wlogout-lock-screen.png)
 ![Notification](./screenshots/dunst-notification.png)
 
 ---
