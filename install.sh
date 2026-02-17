@@ -137,10 +137,17 @@ install_dependencies() {
     # Check for NVIDIA GPU
     if lspci | grep -i nvidia > /dev/null; then
         print_info "NVIDIA GPU detected!"
-        print_info "Additional NVIDIA packages will be installed:"
+        print_info "Additional NVIDIA packages available:"
         printf '%s\n' "${nvidia_packages[@]}"
         echo
-        INSTALL_NVIDIA=true
+        read -p "Install NVIDIA drivers? (y/n) " -n 1 -r
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            INSTALL_NVIDIA=true
+        else
+            print_info "Skipping NVIDIA driver installation."
+            INSTALL_NVIDIA=false
+        fi
     else
         print_warning "No NVIDIA GPU detected. Skipping NVIDIA packages."
         INSTALL_NVIDIA=false
