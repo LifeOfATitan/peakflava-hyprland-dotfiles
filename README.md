@@ -39,6 +39,7 @@ A high-performance, visually polished, and fully customized Hyprland environment
 
 ### Network & Connections
 ![Orbit](./screenshots/orbit_demo.gif)
+*For full documentation and advanced usage, visit the [Orbit Repository](https://github.com/LifeOfATitan/orbit).*
 
 ---
 

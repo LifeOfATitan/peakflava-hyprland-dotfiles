@@ -23,7 +23,7 @@ custom-hyprland-dotfiles/
 │   └── kitty.conf                # Terminal configuration
 ├── dunst/                         # Dunst notification daemon
 │   └── dunstrc                   # Notification styling
-├── orbit/                         # Orbit WiFi/Bluetooth Manager
+├── orbit/                         # Orbit WiFi/Bluetooth Manager ([Source](https://github.com/LifeOfATitan/orbit))
 │   └── theme.toml                # Orbit color configuration
 ├── zsh/                           # Zsh shell configuration
 │   ├── .zshrc                    # Zsh configuration with productivity functions
