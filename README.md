@@ -9,6 +9,7 @@ A high-performance, visually polished, and fully customized Hyprland environment
 - **Video Wallpaper Engine**: Native support for live wallpapers via `mpvpaper`.
 - **Intelligent Rofi**: A custom, centered 3-column grid for wallpaper selection.
 - **Dashboards**: Integrated BTOP system monitoring that inherits your current theme.
+- **Orbit Connection Manager**: A native, glassmorphism-styled manager for WiFi and Bluetooth.
 - **Productivity Boost**: Custom auto-resizing functions for Neovim, Tmux, and more.
 
 ## 📸 Screenshots
@@ -35,6 +36,9 @@ A high-performance, visually polished, and fully customized Hyprland environment
 ![Lock Screen](./screenshots/wlogout-lock-screen.png)
 ![Lock Screen](./screenshots/wlogout-lock-screen2.png)
 ![Notification](./screenshots/dunst-notification.png)
+
+### Network & Connections
+![Orbit](./screenshots/orbit_demo.gif)
 
 ---
 
