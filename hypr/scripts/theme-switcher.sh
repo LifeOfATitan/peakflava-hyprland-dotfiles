@@ -548,6 +548,14 @@ window#waybar {
     border-radius: 4px;
 }
 
+#custom-orbit {
+    background-color: ${accent_alt};
+    color: ${text_on_accent_alt};
+    padding: 6px 12px;
+    margin: 6px 3px;
+    border-radius: 4px;
+}
+
 #cpu {
     background-color: ${accent_alt};
     color: ${text_on_accent_alt};
@@ -837,7 +845,8 @@ EOF
     sleep 0.5
     dunst &
     
-    # Note: Wlogout CSS updated, will apply on next launch
+    # Sync Orbit Theme
+    bash "$HOME/.config/hypr/scripts/sync-orbit-theme.sh" "$accent" "$accent_alt" "$bg" "$fg"
 }
 
 # Load theme list from config file
@@ -1180,6 +1189,7 @@ show_theme_menu() {
             ;;
         "Default Theme")
             apply_colors "#8b5cf6" "#06b6d4" "#1e1e2e" "#d4d4d8" "dark" ""
+            bash "$HOME/.config/hypr/scripts/sync-orbit-theme.sh" default
             notify-send "Theme Applied" "Default theme applied"
             ;;
         "Wallpaper-based Theme")

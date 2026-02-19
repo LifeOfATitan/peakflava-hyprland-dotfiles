@@ -1,3 +1,4 @@
+
 {
     "layer": "top",
     "position": "top",
@@ -8,7 +9,7 @@
     "spacing": 4,
     "modules-left": ["custom/launcher", "custom/clipboard", "clock", "custom/weather_themed"],
     "modules-center": ["idle_inhibitor", "hyprland/workspaces", "hyprland/window"],
-    "modules-right": ["tray", "network", "cpu", "pulseaudio", "backlight", "battery", "custom/notification", "custom/power"],
+    "modules-right": ["tray", "custom/orbit", "cpu", "pulseaudio", "backlight", "battery", "custom/notification", "custom/power"],
     "reload_style_on_change": true,
 
     "custom/launcher": {
@@ -82,6 +83,12 @@
         "format-disconnected": "󰖪",
         "tooltip-format": "{essid} ({signalStrength}%)",
         "on-click": "nm-connection-editor"
+    },
+    "custom/orbit": {
+        "exec": "/home/amadeus/Documents/projects/orbit/target/release/orbit waybar-status",
+        "return-type": "json",
+        "interval": 10,
+        "on-click": "/home/amadeus/Documents/projects/orbit/target/release/orbit toggle top-right"
     },
 
     "cpu": {

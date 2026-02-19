@@ -307,7 +307,7 @@ Izmir
 Ankara"
 
     # Prompt for city input using rofi with autocomplete
-    NEW_CITY=$(echo "$CITIES_LIST" | rofi -dmenu -p "Enter city name:" -theme-str 'window { width: 400px; } listview { lines: 10; }')
+    NEW_CITY=$(echo "$CITIES_LIST" | rofi -dmenu -p "Enter city name:" -theme-str 'window { width: 600px; } listview { lines: 10; }')
     
     # Exit if user cancelled or input is empty
     if [ -z "$NEW_CITY" ]; then
@@ -316,9 +316,11 @@ Ankara"
     
     # Validate city by testing wttr.in response
     TEST_RESPONSE=$(curl -s "wttr.in/$NEW_CITY?format=%C" --connect-timeout 5)
-    if [ -z "$TEST_RESPONSE" ] || [ "$TEST_RESPONSE" = "Unknown location;" ]; then
+    if [ "$TEST_RESPONSE" = "Unknown location;" ]; then
         notify-send "Weather" "City '$NEW_CITY' not found. Please try a different city name." -u critical
         exit 1
+    elif [ -z "$TEST_RESPONSE" ]; then
+        notify-send "Weather" "Server unresponsive, but city saved: '$NEW_CITY'. Weather may appear later." -u normal
     fi
     
     # Save the new city
@@ -335,18 +337,18 @@ fi
 
 # Fetch weather data
 if [ "$UNIT" = "C" ]; then
-    weather=$(curl -s "wttr.in/$CITY?format=%c%t&m")
+    weather=$(curl -s --max-time 10 "wttr.in/$CITY?format=%c%t&m")
 else
-    weather=$(curl -s "wttr.in/$CITY?format=%c%t&u")
+    weather=$(curl -s --max-time 10 "wttr.in/$CITY?format=%c%t&u")
 fi
 
 if [ -z "$weather" ]; then
-    echo "{\"text\": \"N/A\", \"tooltip\": \"Weather unavailable\"}"
+    echo "{\"text\": \"N/A\", \"tooltip\": \"Weather unavailable (timeout or service down)\"}"
     exit 0
 fi
 
 # Get location info for tooltip (city format)
-location_info=$(curl -s "wttr.in/$CITY?format=%l" 2>/dev/null | sed 's/_/ /g')
+location_info=$(curl -s --max-time 10 "wttr.in/$CITY?format=%l" 2>/dev/null | sed 's/_/ /g')
 
 # Output JSON for Waybar
 echo "{\"text\": \"$weather\", \"tooltip\": \"$location_info\"}"

@@ -46,7 +46,7 @@ backup_configs() {
     BACKUP_DIR="$HOME/.config/dotfiles-backup-$(date +%Y%m%d-%H%M%S)"
     mkdir -p "$BACKUP_DIR"
     
-    configs=("hypr" "waybar" "rofi" "kitty" "dunst" "swaync" "wlogout" "nvim" "tmux")
+    configs=("hypr" "waybar" "rofi" "kitty" "dunst" "swaync" "wlogout" "nvim" "tmux" "orbit")
     
     for config in "${configs[@]}"; do
         if [ -d "$HOME/.config/$config" ]; then
@@ -120,6 +120,7 @@ install_dependencies() {
         "bc"
         "ffmpeg"
         "thefuck"
+        "orbit-wifi"
     )
     
     nvidia_packages=(
@@ -163,31 +164,16 @@ install_dependencies() {
             print_info "Installing NVIDIA packages..."
             sudo pacman -S --needed "${nvidia_packages[@]}"
             print_success "NVIDIA packages installed"
-            
-            # Configure NVIDIA
-            print_info "Configuring NVIDIA settings..."
-            
-            # Check if nvidia module needs to be added to mkinitcpio
-            if ! grep -q "nvidia" /etc/mkinitcpio.conf; then
-                print_warning "NVIDIA modules not found in /etc/mkinitcpio.conf"
-                print_info "You may need to add: MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)"
-                print_info "Then run: sudo mkinitcpio -P"
-            fi
-            
-            # Check kernel parameters
-            if [ -f /etc/default/grub ]; then
-                if ! grep -q "nvidia-drm.modeset=1" /etc/etc/default/grub; then
-                    print_warning "NVIDIA DRM modeset not enabled in GRUB"
-                    print_info "Add 'nvidia-drm.modeset=1' to GRUB_CMDLINE_LINUX_DEFAULT"
-                    print_info "Then run: sudo grub-mkconfig -o /boot/grub/grub.cfg"
-                fi
-            fi
-            
-            # Enable NVIDIA services
-            print_info "Enabling NVIDIA power management services..."
-            sudo systemctl enable nvidia-suspend.service 2>/dev/null || true
-            sudo systemctl enable nvidia-hibernate.service 2>/dev/null || true
-            sudo systemctl enable nvidia-resume.service 2>/dev/null || true
+        fi
+
+        # Install Orbit from AUR
+        print_info "Checking for AUR helper to install orbit-wifi..."
+        if command -v yay &> /dev/null; then
+            yay -S --needed orbit-wifi
+        elif command -v paru &> /dev/null; then
+            paru -S --needed orbit-wifi
+        else
+            print_warning "No AUR helper found. Please install 'orbit-wifi' manually from AUR."
         fi
         
         print_success "Packages installed successfully"
@@ -240,7 +226,7 @@ copy_dotfiles() {
     SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     
     # Create config directories
-    mkdir -p "$HOME/.config"/{hypr,waybar,rofi,kitty,wlogout,nvim,tmux,btop}
+    mkdir -p "$HOME/.config"/{hypr,waybar,rofi,kitty,wlogout,nvim,tmux,btop,orbit}
     mkdir -p "$HOME/.config/hypr"/{scripts,themes}
     mkdir -p "$HOME/.config/waybar/scripts"
     mkdir -p "$HOME/.config/btop/themes"
@@ -276,6 +262,14 @@ $accent = rgb(8b5cf6)
 $accent_alt = rgb(06b6d4)
 $background = rgb(1e1e2e)
 $foreground = rgb(d4d4d8)
+EOF
+
+    # Initialize Orbit theme
+    cat > "$HOME/.config/orbit/theme.toml" <<EOF
+accent_primary = "#8b5cf6"
+accent_secondary = "#06b6d4"
+background = "#1e1e2e"
+foreground = "#d4d4d8"
 EOF
 
     cat > "$HOME/.cache/waybar_colors.css" <<EOF
@@ -360,6 +354,10 @@ main() {
     copy_dotfiles
     set_permissions
     change_shell
+    
+    # Enable Orbit service
+    print_info "Enabling Orbit background service..."
+    systemctl --user enable --now orbit 2>/dev/null || print_warning "Could not enable orbit service. Is it installed?"
     
     echo
     print_header "Installation Complete!"
