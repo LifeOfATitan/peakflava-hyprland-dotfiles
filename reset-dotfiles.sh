@@ -85,6 +85,15 @@ backup_configs() {
 remove_configs() {
     print_header "Removing current configuration files"
     
+    # Stop and disable services
+    print_info "Stopping services..."
+    systemctl --user stop orbit 2>/dev/null || true
+    systemctl --user disable orbit 2>/dev/null || true
+    killall swww-daemon 2>/dev/null || true
+    killall waybar 2>/dev/null || true
+    killall dunst 2>/dev/null || true
+    killall swaync 2>/dev/null || true
+    
     # Directories and files to remove
     items_to_remove=(
         ".config/hypr"
@@ -92,16 +101,20 @@ remove_configs() {
         ".config/rofi"
         ".config/kitty"
         ".config/dunst"
+        ".config/swaync"
         ".config/wlogout"
         ".config/nvim"
         ".config/tmux"
         ".config/btop"
+        ".config/orbit"
         ".zshrc"
         ".tmux.conf"
         ".cache/wal"
         ".cache/hypr_colors.conf"
+        ".cache/hyprlock_colors.conf"
         ".cache/waybar_colors.css"
         ".cache/rofi_colors.rasi"
+        ".cache/dunst_colors"
         ".cache/blurred_wallpaper.png"
     )
     
@@ -111,6 +124,12 @@ remove_configs() {
             rm -rf "$HOME/$item"
         fi
     done
+
+    # Remove custom zsh theme
+    if [ -d "$HOME/.oh-my-zsh/custom/themes" ]; then
+        print_info "Removing custom Zsh theme..."
+        rm -f "$HOME/.oh-my-zsh/custom/themes/custom-theme.zsh-theme"
+    fi
     
     print_success "Configurations removed"
 }

@@ -81,9 +81,12 @@ install_dependencies() {
         "hyprland"
         "waybar"
         "hypridle"
+        "hyprlock"
+        "hyprpaper"
         "rofi-wayland"
         "kitty"
         "dunst"
+        "swaync"
         "swww"
         "wlogout"
         "grim"
@@ -93,8 +96,11 @@ install_dependencies() {
         "brightnessctl"
         "playerctl"
         "pavucontrol"
+        "networkmanager"
         "network-manager-applet"
         "blueman"
+        "bluez"
+        "bluez-utils"
         "hyprpolkitagent"
         "xdg-desktop-portal-hyprland"
         "qt6ct"
@@ -120,7 +126,8 @@ install_dependencies() {
         "bc"
         "ffmpeg"
         "thefuck"
-        "orbit-wifi"
+        "jq"
+        "socat"
     )
     
     nvidia_packages=(
@@ -214,7 +221,13 @@ install_oh_my_zsh() {
         git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-completions
     fi
     
-    print_success "Oh My Zsh plugins installed"
+    # Install custom theme
+    print_info "Installing custom Zsh theme..."
+    SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    mkdir -p "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes"
+    cp "$SCRIPT_DIR/zsh/custom-theme.zsh-theme" "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/"
+    
+    print_success "Oh My Zsh plugins and theme installed"
 }
 
 # ═══════════════════════════════════════════════════════════════════
@@ -254,16 +267,27 @@ EOF
 \$background_hex = 1e1e2e
 \$foreground_hex = d4d4d8
 EOF
-    fi
     
-    # Initialize default colors
-    cat > "$HOME/.cache/hypr_colors.conf" <<EOF
-$accent = rgb(8b5cf6)
-$accent_alt = rgb(06b6d4)
-$background = rgb(1e1e2e)
-$foreground = rgb(d4d4d8)
-EOF
-
+    # Copy configuration files
+    print_info "Copying configuration files..."
+    cp -r "$SCRIPT_DIR/hypr" "$HOME/.config/"
+    cp -r "$SCRIPT_DIR/waybar" "$HOME/.config/"
+    cp -r "$SCRIPT_DIR/rofi" "$HOME/.config/"
+    cp -r "$SCRIPT_DIR/kitty" "$HOME/.config/"
+    cp -r "$SCRIPT_DIR/dunst" "$HOME/.config/"
+    cp -r "$SCRIPT_DIR/wlogout" "$HOME/.config/"
+    cp -r "$SCRIPT_DIR/nvim" "$HOME/.config/"
+    cp -r "$SCRIPT_DIR/tmux" "$HOME/.config/"
+    cp -r "$SCRIPT_DIR/btop" "$HOME/.config/"
+    cp -r "$SCRIPT_DIR/orbit" "$HOME/.config/"
+    
+    # Copy wallpapers
+    cp -r "$SCRIPT_DIR/wallpapers"/* "$HOME/wallpapers/"
+    
+    # Copy shell configs
+    cp "$SCRIPT_DIR/zsh/.zshrc" "$HOME/.zshrc"
+    cp "$SCRIPT_DIR/tmux/tmux.conf" "$HOME/.tmux.conf" 2>/dev/null || true
+    
     # Initialize Orbit theme
     cat > "$HOME/.config/orbit/theme.toml" <<EOF
 accent_primary = "#8b5cf6"
@@ -303,8 +327,13 @@ EOF
 set_permissions() {
     print_header "Setting permissions"
     
+    print_info "Making scripts executable..."
     find "$HOME/.config/hypr/scripts" -type f -name "*.sh" -exec chmod +x {} +
     find "$HOME/.config/waybar/scripts" -type f -name "*.sh" -exec chmod +x {} +
+    
+    # Also ensure any scripts in the root of the config are executable
+    chmod +x "$HOME/.config/hypr/scripts/"* 2>/dev/null || true
+    chmod +x "$HOME/.config/waybar/scripts/"* 2>/dev/null || true
     
     print_success "Permissions set"
 }
@@ -356,8 +385,12 @@ main() {
     change_shell
     
     # Enable Orbit service
-    print_info "Enabling Orbit background service..."
-    systemctl --user enable --now orbit 2>/dev/null || print_warning "Could not enable orbit service. Is it installed?"
+    print_info "Ensuring system services are active..."
+    sudo systemctl enable --now bluetooth 2>/dev/null || print_warning "Could not enable bluetooth service."
+    sudo systemctl enable --now NetworkManager 2>/dev/null || print_warning "Could not enable NetworkManager."
+    
+    print_info "Enabling Orbit wrapper daemon..."
+    systemctl --user enable --now orbit 2>/dev/null || print_warning "Could not enable orbit user service. Ensure 'orbit-wifi' is installed correctly."
     
     echo
     print_header "Installation Complete!"
