@@ -106,7 +106,6 @@ remove_configs() {
         ".config/nvim"
         ".config/tmux"
         ".config/btop"
-        ".config/orbit"
         ".zshrc"
         ".tmux.conf"
         ".cache/wal"

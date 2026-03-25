@@ -46,7 +46,7 @@ backup_configs() {
     BACKUP_DIR="$HOME/.config/dotfiles-backup-$(date +%Y%m%d-%H%M%S)"
     mkdir -p "$BACKUP_DIR"
     
-    configs=("hypr" "waybar" "rofi" "kitty" "dunst" "swaync" "wlogout" "nvim" "tmux" "orbit")
+    configs=("hypr" "waybar" "rofi" "kitty" "dunst" "swaync" "wlogout" "nvim" "tmux")
     
     for config in "${configs[@]}"; do
         if [ -d "$HOME/.config/$config" ]; then
@@ -239,7 +239,7 @@ copy_dotfiles() {
     SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     
     # Create config directories
-    mkdir -p "$HOME/.config"/{hypr,waybar,rofi,kitty,wlogout,nvim,tmux,btop,orbit}
+    mkdir -p "$HOME/.config"/{hypr,waybar,rofi,kitty,wlogout,nvim,tmux,btop}
     mkdir -p "$HOME/.config/hypr"/{scripts,themes}
     mkdir -p "$HOME/.config/waybar/scripts"
     mkdir -p "$HOME/.config/btop/themes"
@@ -279,7 +279,6 @@ EOF
     cp -r "$SCRIPT_DIR/nvim" "$HOME/.config/"
     cp -r "$SCRIPT_DIR/tmux" "$HOME/.config/"
     cp -r "$SCRIPT_DIR/btop" "$HOME/.config/"
-    cp -r "$SCRIPT_DIR/orbit" "$HOME/.config/"
     
     # Copy wallpapers
     cp -r "$SCRIPT_DIR/wallpapers"/* "$HOME/wallpapers/"
