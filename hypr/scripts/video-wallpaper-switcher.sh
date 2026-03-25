@@ -26,9 +26,9 @@ filename=$(basename "$video")
 pkill mpvpaper 2>/dev/null
 sleep 0.3
 
-# Clear swww wallpaper to prevent it from showing behind video
-if command -v swww &> /dev/null; then
-    swww clear 2>/dev/null
+# Clear awww wallpaper to prevent it from showing behind video
+if command -v awww &> /dev/null; then
+    awww clear 2>/dev/null
 fi
 sleep 0.2
 

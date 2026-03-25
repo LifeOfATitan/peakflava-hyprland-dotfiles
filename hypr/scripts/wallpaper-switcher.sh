@@ -7,9 +7,9 @@
 WALLPAPER_DIR="$HOME/wallpapers"
 INTERVAL=7200 # 2 hours in seconds
 
-# Initialize swww if not running
-if ! pgrep -x "swww-daemon" > /dev/null; then
-    swww-daemon &
+# Initialize awww if not running
+if ! pgrep -x "awww-daemon" > /dev/null; then
+    awww-daemon &
     sleep 1
 fi
 
@@ -21,7 +21,7 @@ change_wallpaper() {
         
         if [ -n "$wallpaper" ]; then
             # Apply wallpaper with a nice transition
-            swww img "$wallpaper" --transition-type random --transition-step 1 --transition-fps 60
+            awww img "$wallpaper" --transition-type random --transition-duration 1 --transition-fps 60
             # notify-send -i image "Wallpaper Changed" "New wallpaper: $(basename "$wallpaper")"
         fi
     fi

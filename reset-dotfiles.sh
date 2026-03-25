@@ -89,7 +89,7 @@ remove_configs() {
     print_info "Stopping services..."
     systemctl --user stop orbit 2>/dev/null || true
     systemctl --user disable orbit 2>/dev/null || true
-    killall swww-daemon 2>/dev/null || true
+    killall awww-daemon 2>/dev/null || true
     killall waybar 2>/dev/null || true
     killall dunst 2>/dev/null || true
     killall swaync 2>/dev/null || true

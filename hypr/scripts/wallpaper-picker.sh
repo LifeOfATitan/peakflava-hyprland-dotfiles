@@ -144,7 +144,7 @@ apply_wallpaper() {
             if command -v mpvpaper &> /dev/null; then
                 pkill mpvpaper 2>/dev/null
                 sleep 0.2
-                command -v swww &>/dev/null && swww clear 2>/dev/null
+                command -v awww &>/dev/null && awww clear 2>/dev/null
                 mpvpaper -o "--loop-file --no-audio --panscan=1.0" "*" "$file" &
                 notify-send "Wallpaper Changed" "Applied video: $(basename "$file")" -t 2000
             else
@@ -152,16 +152,16 @@ apply_wallpaper() {
             fi
             ;;
         *)
-            if command -v swww &> /dev/null; then
+            if command -v awww &> /dev/null; then
                 pkill mpvpaper 2>/dev/null
-                if ! pgrep -x "swww-daemon" > /dev/null; then
-                    swww-daemon &
+                if ! pgrep -x "awww-daemon" > /dev/null; then
+                    awww-daemon &
                     sleep 1
                 fi
-                swww img "$file" --transition-type random --transition-step 1 --transition-fps 60
+                awww img "$file" --transition-type random --transition-duration 1 --transition-fps 60
                 notify-send "Wallpaper Changed" "Applied: $(basename "$file")" -t 2000
             else
-                notify-send "Error" "swww is not installed" -t 3000
+                notify-send "Error" "awww is not installed" -t 3000
             fi
             ;;
     esac

@@ -87,7 +87,7 @@ install_dependencies() {
         "kitty"
         "dunst"
         "swaync"
-        "swww"
+        "awww"
         "wlogout"
         "grim"
         "slurp"
