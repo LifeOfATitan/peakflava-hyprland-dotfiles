@@ -75,3 +75,36 @@ Developed and maintained by **peakFlava**.
 
 ## 📜 License
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+---
+
+## 🆙 Upgrading
+
+If you have already installed these dotfiles and want to update to the latest version, follow these steps:
+
+1. **Pull the latest changes:**
+   ```bash
+   git pull origin main
+   ```
+
+2. **Install the new dependency:**
+   `awww` is now the default wallpaper manager. Install it via your AUR helper:
+   ```bash
+   yay -S awww
+   ```
+
+3. **Re-run the installation script:**
+   This will update your configuration files and scripts to work with `awww`:
+   ```bash
+   chmod +x install.sh
+   ./install.sh
+   ```
+
+4. **Cleanup:**
+   You can safely remove `swww` if you no longer use it:
+   ```bash
+   sudo pacman -Rns swww
+   ```
+
+5. **Restart Hyprland:**
+   Log out and log back in, or restart Hyprland for the `awww-daemon` to initialize.
